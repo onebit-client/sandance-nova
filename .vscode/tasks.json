@@ -1,0 +1,13 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "vscode-webpack-extension",
+			"path": ".",
+			"problemMatcher": [],
+			"label": "vscode-webpack-extension",
+			"detail": "vscode-webpack-extension"
+		}
+	]
+}

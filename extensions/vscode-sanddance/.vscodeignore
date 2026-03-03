@@ -1,0 +1,16 @@
+# Exclude parent directories (critical for monorepos)
+../../**
+../**
+
+# Exclude everything first
+**
+
+# Then include only what we want
+!dist/extension-bundle.js
+!resources/
+!resources/**
+!README.md
+!LICENSE
+!CHANGELOG.md
+!sanddance-logo.png
+!package.json

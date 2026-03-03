@@ -1,0 +1,119 @@
+/*!
+* Copyright (c) Microsoft Corporation.
+* Licensed under the MIT License.
+*/
+
+import { base } from '../base';
+import { ColumnMap, ColumnMapBaseProps } from '../controls/columnMap';
+import { DataContent } from '../interfaces';
+import { NewSignal } from 'vega-typings/types';
+import { Palette } from '../palettes';
+import { SandDance } from '@msrvida/sanddance-react';
+import { getInitialSignalValue, Signal } from '../controls/signal';
+import { strings } from '../language';
+import { Group } from '../controls/group';
+import { FluentUITypes } from '@msrvida/fluentui-react-cdn-typings';
+
+export interface Props extends ColumnMapBaseProps {
+    compactUI: boolean;
+    specCapabilities: SandDance.specs.SpecCapabilities;
+    scheme: string;
+    colorColumn: string;
+    colorBin: SandDance.specs.ColorBin;
+    colorBinSignal: NewSignal;
+    colorReverseSignal: NewSignal;
+    dataContent: DataContent;
+    onColorSchemeChange: (scheme: string) => void;
+    onColorBinChange: (colorBin: SandDance.specs.ColorBin) => void;
+    onColorBinCountChange: (value: number) => void;
+    onColorReverseChange: (value: boolean) => void;
+    disabled: boolean;
+    directColor: boolean;
+    onDirectColorChange: (value: boolean) => void;
+}
+
+export function Color(props: Props) {
+    const colorColumn = props.dataContent.columns.filter(c => c.name === props.colorColumn)[0];
+    const disabledColorBin = !colorColumn || !colorColumn.quantitative || props.directColor;
+    const colorBin = props.colorBin || 'quantize';
+    const dropdownRef = base.react.createRef<FluentUITypes.IDropdown>();
+    props.explorer.dialogFocusHandler.focus = ()=> dropdownRef.current?.focus();
+    return (
+        <div className="sanddance-color-dialog">
+            <Group label={strings.labelColor}>
+                <ColumnMap
+                    {...props}
+                    componentRef={dropdownRef}
+                    collapseLabel={props.compactUI}
+                    selectedColumnName={props.colorColumn}
+                    specRole={props.specCapabilities && props.specCapabilities.roles.filter(r => r.role === 'color')[0]}
+                    key={0}
+                />
+                {colorColumn && colorColumn.isColorData && <div
+                    className="sanddance-explanation"
+                    dangerouslySetInnerHTML={{ __html: strings.labelColorFieldIsColorData(colorColumn.name) }}
+                />}
+                {colorColumn && !colorColumn.isColorData && <Palette
+                    collapseLabel={props.compactUI}
+                    scheme={props.scheme}
+                    colorColumn={colorColumn}
+                    changeColorScheme={scheme => {
+                        props.onColorSchemeChange(scheme);
+                    }}
+                    disabled={props.disabled || props.directColor || (colorColumn && colorColumn.isColorData)}
+                />}
+                {colorColumn && !colorColumn.isColorData && <Signal
+                    disabled={props.disabled || !colorColumn || props.directColor || (colorColumn && colorColumn.isColorData)}
+                    signal={props.colorReverseSignal}
+                    explorer={props.explorer}
+                    initialValue={getInitialSignalValue(props.explorer, props.colorReverseSignal)}
+                    onChange={props.onColorReverseChange}
+                    collapseLabel={props.compactUI}
+                />}
+            </Group>
+            {colorColumn && !colorColumn.isColorData && <Group label={strings.labelColorBin}>
+                <div className="sanddance-explanation">{strings.labelColorBinExplanation}</div>
+                <base.fluentUI.ChoiceGroup
+                    selectedKey={colorBin}
+                    options={[
+                        {
+                            key: 'continuous',
+                            text: strings.labelColorBinNone,
+                            disabled: disabledColorBin,
+                        },
+                        {
+                            key: 'quantize',
+                            text: strings.labelColorBinQuantize,
+                            disabled: disabledColorBin,
+                        },
+                        {
+                            key: 'quantile',
+                            text: strings.labelColorBinQuantile,
+                            disabled: disabledColorBin,
+                        },
+                    ]}
+                    onChange={(e, o) => {
+                        props.onColorBinChange(o.key as SandDance.specs.ColorBin);
+                    }}
+                />
+                <Signal
+                    disabled={props.disabled || disabledColorBin || props.colorBin === 'continuous'}
+                    signal={props.colorBinSignal}
+                    explorer={props.explorer}
+                    initialValue={getInitialSignalValue(props.explorer, props.colorBinSignal)}
+                    onChange={props.onColorBinCountChange}
+                    collapseLabel={props.compactUI}
+                />
+            </Group>}
+            {colorColumn && !colorColumn.isColorData && <Group label={strings.labelColorOptions}>
+                <base.fluentUI.Toggle
+                    label={strings.selectDirectColor}
+                    disabled={!colorColumn.stats.hasColorData}
+                    checked={!!(colorColumn.stats.hasColorData && props.directColor)}
+                    onChange={(e, checked?: boolean) => props.onDirectColorChange(checked)}
+                />
+                <div className="sanddance-explanation" dangerouslySetInnerHTML={{ __html: strings.labelDataColors }} />
+            </Group>}
+        </div>
+    );
+}

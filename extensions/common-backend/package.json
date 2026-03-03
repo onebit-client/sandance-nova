@@ -1,0 +1,21 @@
+{
+  "name": "common-backend",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Common backend code for vscode-extension based projects",
+  "main": "dist/es6/index.js",
+  "scripts": {
+    "eslint": "eslint -c ../../eslint.config.mjs --fix ./src/**/*.ts*",
+    "build:07": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Microsoft/SandDance.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Microsoft/SandDance/issues"
+  },
+  "homepage": "https://github.com/Microsoft/SandDance#readme"
+}

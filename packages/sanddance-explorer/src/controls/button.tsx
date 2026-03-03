@@ -1,0 +1,44 @@
+/*!
+* Copyright (c) Microsoft Corporation.
+* Licensed under the MIT License.
+*/
+
+import { base } from '../base';
+import { IButtonProps as _IButtonProps, ICSSRule, ICSSPixelUnitRule, IPalette, IStyle } from '@msrvida/fluentui-react-cdn-typings/types';
+
+export interface IButtonProps extends _IButtonProps {
+    iconName?: string;
+    onClick: { (event: React.MouseEvent<{}>): void };
+    textAlign?: string;
+    width?: ICSSRule | ICSSPixelUnitRule;
+    themePalette: Partial<IPalette>;
+    rootStyle?: IStyle;
+}
+
+export function Button(props: IButtonProps) {
+    return (
+        <base.fluentUI.DefaultButton
+            {...props}
+            styles={{
+                root: {
+                    backgroundColor: 'transparent',
+                    height: '30px',
+                    width: props.width,
+                    padding: 0,
+                    ...props.rootStyle as object,
+                },
+                rootDisabled: {
+                    backgroundColor: 'transparent',
+                },
+                icon: {
+                    color: props.themePalette.themePrimary,
+                },
+                label: {
+                    fontWeight: '400',
+                    textAlign: props.textAlign || 'left',
+                },
+            }}
+            iconProps={{ iconName: props.iconName }}
+        />
+    );
+}

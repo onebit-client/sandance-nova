@@ -1,0 +1,29 @@
+{
+  "name": "@msrvida/chart-types",
+  "version": "1.1.1",
+  "description": "Types for chart applications.",
+  "main": "dist/es6/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/SandDance.git",
+    "directory": "packages/chart-types"
+  },
+  "types": "dist/es6/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "eslint": "eslint -c ../../eslint.config.mjs --fix ./src/**/*.ts*",
+    "predocs": "rimraf ../../docs/docs/chart-types/v1",
+    "watch-typescript": "tsc -p . -w",
+    "build-typescript": "tsc -p .",
+    "build:01": "npm run build-typescript",
+    "remove-vega": "npm un vega-typings",
+    "patch-after-vega-upgrade": "npm version patch"
+  },
+  "author": "Dan Marshall",
+  "license": "MIT",
+  "dependencies": {
+    "vega-typings": "~1.5.0"
+  }
+}

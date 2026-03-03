@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  sanddance:
+    build: .
+    ports:
+      - "8085:80"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - sandance_network
+
+networks:
+  sandance_network:
+    driver: bridge

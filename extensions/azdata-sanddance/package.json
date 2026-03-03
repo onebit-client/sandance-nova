@@ -1,0 +1,107 @@
+{
+    "name": "azdata-sanddance",
+    "displayName": "SandDance for Azure Data Studio",
+    "description": "Visually explore, understand, and present your data.",
+    "version": "4.2.0",
+    "icon": "sanddance-logo.png",
+    "preview": true,
+    "publisher": "msrvida",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Microsoft/Sanddance"
+    },
+    "engines": {
+        "vscode": "^1.53.0",
+        "azdata": "*"
+    },
+    "categories": [
+        "Data Science",
+        "Other",
+        "Visualization"
+    ],
+    "keywords": [
+        "data exploration",
+        "data visualization",
+        "dataviz"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./dist/extension-bundle",
+    "capabilities": {
+        "untrustedWorkspaces": {
+            "supported": true
+        },
+        "virtualWorkspaces": true
+    },
+    "contributes": {
+        "commands": [
+            {
+                "command": "sanddance.view",
+                "title": "View in SandDance"
+            }
+        ],
+        "languages": [
+            {
+                "id": "csv",
+                "extensions": [
+                    ".csv"
+                ]
+            },
+            {
+                "id": "tsv",
+                "extensions": [
+                    ".tsv"
+                ]
+            }
+        ],
+        "menus": {
+            "commandPalette": [
+                {
+                    "command": "sanddance.view",
+                    "when": "false"
+                }
+            ],
+            "explorer/context": [
+                {
+                    "command": "sanddance.view",
+                    "when": "resourceLangId == csv"
+                },
+                {
+                    "command": "sanddance.view",
+                    "when": "resourceLangId == tsv"
+                }
+            ],
+            "editor/title/context": [
+                {
+                    "command": "sanddance.view",
+                    "when": "resourceLangId == csv"
+                },
+                {
+                    "command": "sanddance.view",
+                    "when": "resourceLangId == tsv"
+                }
+            ],
+            "objectExplorer/item/context": [
+                {
+                    "command": "sanddance.view",
+                    "when": "nodeType=~/^mssqlCluster/ && nodeLabel=~/[^\\s]+(\\.(csv|tsv))$/ && nodeType == mssqlCluster:file"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "eslint": "eslint -c ../../eslint.config.mjs --fix ./src/**/*.ts*",
+        "clean": "rimraf ./resources/*.*",
+        "vscode:prepublish": "webpack --mode production",
+        "webpack": "webpack --mode development",
+        "webpack-dev": "webpack --mode development --watch",
+        "resources": "node ../common-frontend/scripts/resources.js",
+        "compile": "tsc -p ./",
+        "x-build:08": "npm run compile && npm run resources",
+        "x-test": "npm run compile && node ./node_modules/vscode/bin/test",
+        "x-deploy": "node ./scripts/deploy.js",
+        "x-build:09": "vsce package"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "allowJs": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "jsx": "react",
+        "jsxFactory": "React.createElement",
+        "target": "es6",
+        "sourceMap": true,
+        "outDir": "./.tmp/build/",
+        "skipLibCheck": true,
+        "moduleResolution": "node",
+        "declaration": true,
+        "lib": [
+            "es2015",
+            "dom"
+        ],
+        "types": []
+    },
+    "files": [
+        "./src/visual.ts"
+    ]
+}

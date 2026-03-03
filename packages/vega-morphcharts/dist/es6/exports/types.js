@@ -1,0 +1,11 @@
+/*!
+* Copyright (c) Microsoft Corporation.
+* Licensed under the MIT License.
+*/
+/**
+ * This file is for external facing export only, do not use this for internal references,
+ * as it may cause circular dependencies in Rollup.
+ */
+import { MorphChartsCore, } from '../interfaces';
+//alphabetize interfaces  for documentation
+export { MorphChartsCore, };

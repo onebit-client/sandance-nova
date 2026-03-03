@@ -1,0 +1,29 @@
+{
+  "name": "@msrvida/sanddance-embed",
+  "version": "4.5.0",
+  "description": "Embeddable SandDance Explorer.",
+  "browser": "dist/umd/sanddance-embed.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/SandDance.git",
+    "directory": "packages/sanddance-embed"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "eslint": "eslint -c ../../eslint.config.mjs --fix ./src/**/*.ts*",
+    "gen": "node ./scripts/gen.js",
+    "build-css": "sass ./src/css/sanddance-embed.scss ./dist/css/sanddance-embed.css",
+    "build-typescript": "tsc -p .",
+    "build-gen": "tsc -p ./src/gen",
+    "build:07": "npm run build-css && npm run build-typescript",
+    "remove-vega": "npm un vega",
+    "patch-after-vega-upgrade": "npm version patch"
+  },
+  "dependencies": {
+    "@msrvida/sanddance-explorer": "^4"
+  },
+  "author": "Dan Marshall",
+  "license": "MIT"
+}

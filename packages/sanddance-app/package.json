@@ -1,0 +1,26 @@
+{
+  "name": "@msrvida/sanddance-app",
+  "private": true,
+  "version": "4.0.0",
+  "scripts": {
+    "eslint": "eslint -c ../../eslint.config.mjs --fix ./src/**/*.ts*",
+    "deploy": "npm run bundle && node ./scripts/deploy.js",
+    "build-typescript": "tsc -p .",
+    "watch-typescript": "tsc -p . -w",
+    "build-css": "sass ./src/css/sanddance-app.scss ./dist/css/sanddance-app.css",
+    "build:07": "npm run build-typescript && npm run bundle && npm run build-css",
+    "bundle": "parcel build ./dist/es6/index.js --no-autoinstall --no-cache",
+    "remove-vega": "npm un vega vega-typings"
+  },
+  "targets": {
+    "main": false,
+    "types": false,
+    "umd": {
+      "distDir": "./dist/umd",
+      "optimize": false,
+      "scopeHoist": false,
+      "sourceMap": false
+    }
+  },
+  "umd": "./dist/umd/sanddance-app.js"
+}

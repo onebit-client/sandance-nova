@@ -1,0 +1,24 @@
+{
+  "name": "common-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Common frontend code for vscode-extension based projects",
+  "main": "index.js",
+  "scripts": {
+    "eslint": "eslint -c ../../eslint.config.mjs --fix ./src/**/*.ts*",
+    "build-css": "sass ./src/css/app.scss ./dist/app.css",
+    "build-ui": "tsc -p .",
+    "build:07": "npm run build-css && npm run build-ui",
+    "remove-vega": "npm un vega"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Microsoft/SandDance.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Microsoft/SandDance/issues"
+  },
+  "homepage": "https://github.com/Microsoft/SandDance#readme"
+}

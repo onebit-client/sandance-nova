@@ -1,0 +1,42 @@
+{
+  "name": "@msrvida/vega-deck.gl",
+  "version": "3.3.6",
+  "description": "Deck.gl renderer for Vega",
+  "main": "dist/es6/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/SandDance.git",
+    "directory": "packages/vega-deck.gl"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "vegatest": "parcel serve ./test/vegaspec/vega-deck.gl.test.html --port 8087 --open --no-hmr --no-autoinstall",
+    "cubetest": "parcel serve ./test/cubelayer/cubeTest.html --port 8087 --open --no-hmr",
+    "x-deploy": "node ./scripts/deploy.js",
+    "eslint": "eslint -c ../../eslint.config.mjs --fix ./src/**/*.ts*",
+    "watch-typescript": "tsc -p . -w",
+    "build-typescript": "tsc -p .",
+    "bundle": "rollup -c",
+    "x-build:02": "npm run build-typescript && npm run bundle",
+    "remove-vega": "npm un vega vega-typings",
+    "patch-after-vega-upgrade": "npm version patch"
+  },
+  "keywords": [
+    "vega",
+    "deck.gl",
+    "webgl"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@danmarshall/deckgl-typings": "^4.1.11",
+    "@msrvida/chart-types": "^1",
+    "d3-color": "^3.1.0",
+    "d3-ease": "^1.0.5",
+    "deepmerge": "^2.1.1",
+    "tsx-create-element": "^2.2.9",
+    "vega-typings": "~1.5.0"
+  }
+}

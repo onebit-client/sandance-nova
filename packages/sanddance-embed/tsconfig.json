@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "dom",
+            "es2015"
+        ],
+        "skipLibCheck": true,
+        "outFile": "dist/umd/sanddance-embed.js"
+    },
+    "exclude": [
+        "src/gen"
+    ],
+    "include": [
+        "src"
+    ]
+}

@@ -1,0 +1,26 @@
+{
+  "Overview": [
+    {
+      "tree": "Introduction",
+      "url": "/docs"
+    },
+    {
+      "tree": "Changelog",
+      "url": "/docs/changelog"
+    },
+    {
+      "tree": "Contributing",
+      "url": "/docs/contributing"
+    }
+  ],
+  "Resources": [
+    {
+      "tree": "Vega",
+      "url": "https://vega.github.io/"
+    },
+    {
+      "tree": "MorphCharts",
+      "url": "https://morphcharts.com/"
+    }
+  ]
+}
