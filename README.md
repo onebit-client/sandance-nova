@@ -1,5 +1,100 @@
 # SandDance
 
+## Project Overview
+
+SandDance is a powerful data visualization tool designed to help you visually explore, understand, and present data. It leverages unit visualizations - applying a clear, one-to-one mapping between rows in your database and distinct graphical marks on the screen. With smooth animated transitions between varying views, SandDance helps you maintain context while interacting deeply with your data, whether you're finding insights, telling data-driven stories, or testing hypotheses.
+
+Recently rebuilt from the ground up, SandDance is now modular, extensible, and readily embeddable into custom applications.
+
+## Prerequisites
+
+Before setting up the project locally or in production, ensure you have the following installed:
+
+- **Node.js**: (v18 or higher recommended)
+- **npm** or **yarn**
+
+## Local Setup & Development
+
+To get started with SandDance locally, follow these steps:
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/microsoft/SandDance.git
+   cd SandDance
+   ```
+
+2. **Install dependencies:**
+   The project uses npm workspaces to manage its various packages.
+
+   ```bash
+   npm install
+   ```
+
+   _Note: This might take a few minutes as it installs dependencies across all packages._
+
+3. **Start the development server:**
+   To run the core SandDance application locally, use the following command:
+
+   ```bash
+   npm start
+   ```
+
+   This command starts up the development server (using Parcel) and will automatically open the SandDance app in your browser at `http://localhost:8085`.
+
+4. **Building for Production:**
+   To build the bundles locally (e.g., if you are testing the build output), run:
+   ```bash
+   npm run build
+   ```
+   This will output the compiled assets into the respective `dist/` directories of the packages.
+
+## Production Deployment (VPS / cPanel)
+
+When you are ready to deploy SandDance to a live environment (such as a VPS, cPanel, or static hosting service), there are generally two strategies depending on your setup.
+
+### Option A: Static Hosting / cPanel (Recommended)
+
+Since SandDance is entirely client-side JavaScript, HTML, and CSS, it is perfectly suited for static hosting.
+
+1. **Build the Application Locally:**
+   First, generate the production bundles on your local machine.
+   ```bash
+   npm install
+   npm run build-app
+   ```
+   _(Note: The `build-app` script specifically outputs the explorer interface to a `./dist` folder at the root of the project.)_
+2. **Upload to Server:**
+   - **For cPanel:** Zip the contents of the newly generated `./dist` folder. Upload that `.zip` file into your desired directory via exactly the **File Manager** (e.g., inside `public_html`), and extract it there.
+   - **For VPS or other Static Hosts:** You can use `scp`, `rsync`, or FTP to transfer the contents of the `./dist` directory directly onto your web server's serving directory (like `/var/www/html` for Apache or Nginx).
+
+### Option B: Node.js App on VPS (Advanced)
+
+If you are running a Node server (e.g., Express) on a VPS to serve the application along with other APIs, you can clone and build the application directly on the server.
+
+1. **Clone and Build on Server:**
+   SSH into your server and run:
+
+   ```bash
+   git clone https://github.com/microsoft/SandDance.git
+   cd SandDance
+   npm install
+   npm run build-app
+   ```
+
+2. **Serve the Static Files:**
+   Configure your web server to serve the generated `./dist` folder. For instance, using `pm2` with a simple static server (e.g., `serve`):
+   ```bash
+   npm install -g serve
+   pm2 start serve --name "sanddance" -- -s dist -l 8080
+   ```
+3. **Configure Reverse Proxy:**
+   Set up your reverse proxy (Nginx or Apache) to forward incoming traffic from port `80`/`443` to the local application port (e.g., `8080`).
+
+---
+
+_Original Documentation below:_
+
 Visually explore, understand, and present your data.
 
 ![sanddance-animation](https://user-images.githubusercontent.com/11507384/189461831-9467863e-bff8-47d2-aa03-ab2b74658814.gif)
@@ -14,74 +109,75 @@ Smooth animated transitions between views help you to maintain context as you in
 SandDance was created by the [Microsoft Research VIDA Group](https://aka.ms/vida) which explores novel technologies for visualization and immersive data analytics.
 
 ## Where can I use SandDance?
-* [Try it now on the web](https://microsoft.github.io/SandDance/app/)
-* Microsoft apps:
-  * [Power BI](https://appsource.microsoft.com/en-us/product/power-bi-visuals/WA200000430) - [*see additional info*](https://github.com/microsoft/SandDance/blob/master/powerbi.md)
-  * [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/sanddance-extension?view=sql-server-2017)
-  * [VSCode extension](https://marketplace.visualstudio.com/items?itemName=msrvida.vscode-sanddance)
-* 3rd Party apps:
-  * [Observable](https://observablehq.com/collection/@danmarshall/sanddance)
-  * [HASH Core IDE](https://core.hash.ai/) - [*see 'Step Explorer' documentation*](https://docs.hash.ai/core/creating-simulations/views#step-explorer)
-* In your own JavaScript apps - see below
+
+- [Try it now on the web](https://microsoft.github.io/SandDance/app/)
+- Microsoft apps:
+  - [Power BI](https://appsource.microsoft.com/en-us/product/power-bi-visuals/WA200000430) - [_see additional info_](https://github.com/microsoft/SandDance/blob/master/powerbi.md)
+  - [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/sanddance-extension?view=sql-server-2017)
+  - [VSCode extension](https://marketplace.visualstudio.com/items?itemName=msrvida.vscode-sanddance)
+- 3rd Party apps:
+  - [Observable](https://observablehq.com/collection/@danmarshall/sanddance)
+  - [HASH Core IDE](https://core.hash.ai/) - [_see 'Step Explorer' documentation_](https://docs.hash.ai/core/creating-simulations/views#step-explorer)
+- In your own JavaScript apps - see below
 
 ## Component architecture
 
 SandDance is an offering of several JavaScript components:
 
-* [sanddance](packages/sanddance/README.md) - the core SandDance visualization canvas.
-* [sanddance-specs](packages/sanddance-specs/README.md) - [Vega specifications](https://vega.github.io/vega/docs/specification/) for unit visualizations.
-* [sanddance-react](packages/sanddance-react/README.md) - the core SandDance visualization canvas for use in React based applications.
-* [sanddance-explorer](packages/sanddance-explorer/README.md) - the core SandDance visualization canvas with UI to enable data exploration, for use in React based applications.
-* [sanddance-embed](packages/sanddance-embed/README.md) - the easiest way to embed SandDance Explorer in your applications, via an `<iframe>` tag.
+- [sanddance](packages/sanddance/README.md) - the core SandDance visualization canvas.
+- [sanddance-specs](packages/sanddance-specs/README.md) - [Vega specifications](https://vega.github.io/vega/docs/specification/) for unit visualizations.
+- [sanddance-react](packages/sanddance-react/README.md) - the core SandDance visualization canvas for use in React based applications.
+- [sanddance-explorer](packages/sanddance-explorer/README.md) - the core SandDance visualization canvas with UI to enable data exploration, for use in React based applications.
+- [sanddance-embed](packages/sanddance-embed/README.md) - the easiest way to embed SandDance Explorer in your applications, via an `<iframe>` tag.
 
 ## Publications
 
-* 2018 - [Atom: A Grammar for Unit Visualizations](https://www.microsoft.com/en-us/research/uploads/prod/2019/01/atom.pdf)
-  * Deokgun Park, Steven Drucker, Roland Fernandez, Niklas Elmqvist
-  * IEEE Transactions on Visualization and Computer Graphics | December 2018, Vol 24(12): pp. 3032-3043
-* 2015 - [A Unifying Framework for Animated and Interactive Unit Visualizations](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/sanddance.pdf)
-  * Steven Drucker, Roland Fernandez 
-  * MSR-TR-2015-65 | August 2015
+- 2018 - [Atom: A Grammar for Unit Visualizations](https://www.microsoft.com/en-us/research/uploads/prod/2019/01/atom.pdf)
+  - Deokgun Park, Steven Drucker, Roland Fernandez, Niklas Elmqvist
+  - IEEE Transactions on Visualization and Computer Graphics | December 2018, Vol 24(12): pp. 3032-3043
+- 2015 - [A Unifying Framework for Animated and Interactive Unit Visualizations](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/sanddance.pdf)
+  - Steven Drucker, Roland Fernandez
+  - MSR-TR-2015-65 | August 2015
 
 ## Articles & videos
 
-* [SandDance project @ Microsoft Research](https://www.microsoft.com/en-us/research/project/sanddance/)
-* [Microsoft Research webinar / Data Visualization: Bridging the Gap Between Users and Information](https://note.microsoft.com/MSR-Webinar-Data-Visualization-Registration-On-Demand.html).
-* [SQL Server Blog / The August release of Azure Data Studio is now available](https://cloudblogs.microsoft.com/sqlserver/2019/08/15/the-august-release-of-azure-data-studio-is-now-available/)
-* [Open Source Blog / What’s new in SandDance 3](https://cloudblogs.microsoft.com/opensource/2020/06/23/whats-new-sanddance-3-microsoft-research/)
-* [Channel 9 - Data Exposed / Introducing SandDance: Data Visualization in Azure Data Studio](https://channel9.msdn.com/Shows/Data-Exposed/Introducing-SandDance-Data-Visualization-in-Azure-Data-Studio)
-* [Channel 9 - Data Exposed / What is SandDance?](https://channel9.msdn.com/Shows/Data-Exposed/What-is-SandDance)
-* [Hacker News / Microsoft open sources SandDance, a visual data exploration tool](https://news.ycombinator.com/item?id=21224685)
-* [analyticsindiamag.com / Visualizations With SandDance Using Visual Studio Code](https://analyticsindiamag.com/visualizations-with-sanddance-using-visual-studio-code/)
-* [codeburst.io / Exploring Titanic Dataset using Microsoft’s Sandance](https://codeburst.io/exploring-titanic-dataset-using-microsofts-sandance-175eb04b3ac2)
-* [mathkuro.com / VS Codeのイケメンすぎる分析＆可視化ツールSand Danceの使い方](https://www.mathkuro.com/vs-code/sand-dance/)
-* [mathkuro.com / 【SandDanceグラフサンプル】用途に合わせて選択しましょう◎](https://www.mathkuro.com/vs-code/sanddance-charts/)
-* [medium.com - @sefaoguzsaglam / how to start data visualizing with Microsoft’s SandDance (for beginners)](https://medium.com/@sefaoguzsaglam/how-to-start-data-visualizing-with-microsofts-sanddance-for-beginners-abe5c0552750)
-* [mssqltips.com / SandDance for Azure Data Studio](https://www.mssqltips.com/sqlservertip/6045/sanddance-for-azure-data-studio/)
-* [sqlshack.com / Exploring the SandDance Visualizations extension in Azure Data Studio](https://www.sqlshack.com/exploring-the-sanddance-visualizations-extension-in-azure-data-studio/)
-* [torbjornzetterlund.com / I got to do some SandDance visualization](https://torbjornzetterlund.com/i-got-to-do-some-sanddance-vizualisation/)
-* [YouTube - Anjani Prasad Atluri / SandDance: A tutorial](https://www.youtube.com/watch?v=sI4WIQEz07w)
-* [YouTube - BI Tracks / SandDance Visualizations Tutorial - Azure Data Studio](https://www.youtube.com/watch?v=iUhvYMggzAQ)
+- [SandDance project @ Microsoft Research](https://www.microsoft.com/en-us/research/project/sanddance/)
+- [Microsoft Research webinar / Data Visualization: Bridging the Gap Between Users and Information](https://note.microsoft.com/MSR-Webinar-Data-Visualization-Registration-On-Demand.html).
+- [SQL Server Blog / The August release of Azure Data Studio is now available](https://cloudblogs.microsoft.com/sqlserver/2019/08/15/the-august-release-of-azure-data-studio-is-now-available/)
+- [Open Source Blog / What’s new in SandDance 3](https://cloudblogs.microsoft.com/opensource/2020/06/23/whats-new-sanddance-3-microsoft-research/)
+- [Channel 9 - Data Exposed / Introducing SandDance: Data Visualization in Azure Data Studio](https://channel9.msdn.com/Shows/Data-Exposed/Introducing-SandDance-Data-Visualization-in-Azure-Data-Studio)
+- [Channel 9 - Data Exposed / What is SandDance?](https://channel9.msdn.com/Shows/Data-Exposed/What-is-SandDance)
+- [Hacker News / Microsoft open sources SandDance, a visual data exploration tool](https://news.ycombinator.com/item?id=21224685)
+- [analyticsindiamag.com / Visualizations With SandDance Using Visual Studio Code](https://analyticsindiamag.com/visualizations-with-sanddance-using-visual-studio-code/)
+- [codeburst.io / Exploring Titanic Dataset using Microsoft’s Sandance](https://codeburst.io/exploring-titanic-dataset-using-microsofts-sandance-175eb04b3ac2)
+- [mathkuro.com / VS Codeのイケメンすぎる分析＆可視化ツールSand Danceの使い方](https://www.mathkuro.com/vs-code/sand-dance/)
+- [mathkuro.com / 【SandDanceグラフサンプル】用途に合わせて選択しましょう◎](https://www.mathkuro.com/vs-code/sanddance-charts/)
+- [medium.com - @sefaoguzsaglam / how to start data visualizing with Microsoft’s SandDance (for beginners)](https://medium.com/@sefaoguzsaglam/how-to-start-data-visualizing-with-microsofts-sanddance-for-beginners-abe5c0552750)
+- [mssqltips.com / SandDance for Azure Data Studio](https://www.mssqltips.com/sqlservertip/6045/sanddance-for-azure-data-studio/)
+- [sqlshack.com / Exploring the SandDance Visualizations extension in Azure Data Studio](https://www.sqlshack.com/exploring-the-sanddance-visualizations-extension-in-azure-data-studio/)
+- [torbjornzetterlund.com / I got to do some SandDance visualization](https://torbjornzetterlund.com/i-got-to-do-some-sanddance-vizualisation/)
+- [YouTube - Anjani Prasad Atluri / SandDance: A tutorial](https://www.youtube.com/watch?v=sI4WIQEz07w)
+- [YouTube - BI Tracks / SandDance Visualizations Tutorial - Azure Data Studio](https://www.youtube.com/watch?v=iUhvYMggzAQ)
 
 ## Changelog
 
-* July 2022 - Major version bump to v4: Now using MorphCharts.
-* June 2020 - Major version bump to v3: Now using Deck.gl@8.
-* December 2019 - Major version bump to v2: Now using Vega@5.
-* August 2019 - Initial release to AppSource (Power BI marketplace).
-* April 2019 - Initial release to GitHub.
+- July 2022 - Major version bump to v4: Now using MorphCharts.
+- June 2020 - Major version bump to v3: Now using Deck.gl@8.
+- December 2019 - Major version bump to v2: Now using Vega@5.
+- August 2019 - Initial release to AppSource (Power BI marketplace).
+- April 2019 - Initial release to GitHub.
 
 ## Known issues
 
-* Animations require a WebGL2 enabled browser.
+- Animations require a WebGL2 enabled browser.
 
 ## Roadmap
 
-* ~~PowerBI custom visual based on this new architecture.~~ done!
-* ~~Additional views, such as stacks.~~ done!
-* Code examples and tutorials.
-* ~~Faceting for all chart types.~~ done!
-* Better date handling.
+- ~~PowerBI custom visual based on this new architecture.~~ done!
+- ~~Additional views, such as stacks.~~ done!
+- Code examples and tutorials.
+- ~~Faceting for all chart types.~~ done!
+- Better date handling.
 
 ## Dependencies
 
@@ -93,7 +189,7 @@ See [dev.md](dev.md)
 
 ## Contributing
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
+This project welcomes contributions and suggestions. Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
 the rights to use your contribution. For details, visit https://cla.microsoft.com.
 

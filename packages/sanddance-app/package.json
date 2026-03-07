@@ -22,5 +22,12 @@
       "sourceMap": false
     }
   },
-  "umd": "./dist/umd/sanddance-app.js"
+  "umd": "./dist/umd/sanddance-app.js",
+  "dependencies": {
+    "universal-keycloak-auth": "^1.0.2"
+  },
+  "alias": {
+    "universal-keycloak-auth/react": "universal-keycloak-auth/dist/react.mjs",
+    "keycloak-js": "keycloak-js/lib/keycloak.js"
+  }
 }
