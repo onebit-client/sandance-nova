@@ -57183,9 +57183,9 @@ $RefreshReg$(_c, "Sidebutton");
 
 },{"../base":"pRkrM","./iconButton":"adJWd","@msrvida/sanddance-react":"4Xqh2","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"5mtOZ":[function(require,module,exports,__globalThis) {
 /*!
-* Copyright (c) Microsoft Corporation.
-* Licensed under the MIT License.
-*/ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+ * Copyright (c) Microsoft Corporation.
+ * Licensed under the MIT License.
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Topbar", ()=>Topbar);
 var _commandBarButtonStyles = require("./CommandBarButton.styles");
@@ -57199,55 +57199,55 @@ function Topbar(props) {
     const disabled = !props.loaded;
     const items = [
         {
-            key: 'undo',
+            key: "undo",
             name: (0, _language.strings).buttonUndo,
             iconProps: {
-                iconName: 'Undo'
+                iconName: "Undo"
             },
             disabled: disabled || props.historyItems.length === 0 || props.historyIndex === 0,
             onClick: props.undo
         },
         {
-            key: 'redo',
+            key: "redo",
             name: (0, _language.strings).buttonRedo,
             iconProps: {
-                iconName: 'Redo'
+                iconName: "Redo"
             },
             disabled: disabled || props.historyItems.length <= 1 || props.historyIndex >= props.historyItems.length - 1,
             onClick: props.redo
         },
         {
-            key: 'deselect',
+            key: "deselect",
             name: (0, _language.strings).buttonDeselect,
             iconProps: {
-                iconName: 'Cancel'
+                iconName: "Cancel"
             },
             disabled: disabled || !props.selectionSearch,
             onClick: props.doDeselect
         },
         {
-            key: 'isolate',
+            key: "isolate",
             name: (0, _language.strings).buttonIsolate,
             iconProps: {
-                iconName: 'Filter'
+                iconName: "Filter"
             },
             disabled: disabled || !props.selectionSearch || zeroResults,
             onClick: ()=>props.doFilter(props.selectionSearch, (0, _language.strings).labelHistoryFilterIsolate)
         },
         {
-            key: 'exclude',
+            key: "exclude",
             name: (0, _language.strings).buttonExclude,
             iconProps: {
-                iconName: 'ClearFilter'
+                iconName: "ClearFilter"
             },
             disabled: disabled || !props.selectionSearch || zeroResults,
             onClick: ()=>props.doFilter((0, _sanddanceReact.SandDance).searchExpression.invert(props.selectionSearch), (0, _language.strings).labelHistoryFilterIExclude)
         },
         {
-            key: 'reset',
+            key: "reset",
             name: (0, _language.strings).buttonReset,
             iconProps: {
-                iconName: 'RemoveFilter'
+                iconName: "RemoveFilter"
             },
             disabled: disabled || !props.filter,
             onClick: ()=>props.doUnfilter((0, _language.strings).labelHistoryFilterClear)
@@ -57257,36 +57257,36 @@ function Topbar(props) {
     if (props.collapseLabels) items.forEach((item)=>item.iconOnly = true);
     const farItems = [];
     if (!props.snapshotsHidden) farItems.push({
-        key: 'previous-snapshot',
+        key: "previous-snapshot",
         iconProps: {
-            iconName: 'Previous'
+            iconName: "Previous"
         },
         title: (0, _language.strings).buttonPrevSnapshot,
         onClick: props.onSnapshotPreviousClick,
         disabled: !props.snapshots || props.snapshots.length < 2
     }, {
-        key: 'snapshot',
+        key: "snapshot",
         iconProps: {
-            iconName: 'Camera'
+            iconName: "Camera"
         },
         title: (0, _language.strings).buttonCreateSnapshot,
         onClick: props.onSnapshotClick,
         disabled: !props.loaded
     }, {
-        key: 'next-snapshot',
+        key: "next-snapshot",
         iconProps: {
-            iconName: 'Next'
+            iconName: "Next"
         },
         title: (0, _language.strings).buttonNextSnapshot,
         onClick: props.onSnapshotNextClick,
         disabled: !props.snapshots || props.snapshots.length < 2
     });
     farItems.push({
-        key: 'view',
+        key: "view",
         iconProps: {
-            iconName: props.view === '2d' ? 'CubeShape' : 'Page'
+            iconName: props.view === "2d" ? "CubeShape" : "Page"
         },
-        title: props.view === '2d' ? (0, _language.strings).labelViewType3d : (0, _language.strings).labelViewType2d,
+        title: props.view === "2d" ? (0, _language.strings).labelViewType3d : (0, _language.strings).labelViewType2d,
         onClick: props.onViewClick,
         disabled: !props.loaded
     });
@@ -57295,10 +57295,7 @@ function Topbar(props) {
         className: "sanddance-explorer-topbar"
     }, (0, _base.base).react.createElement("div", {
         className: "logo"
-    }, (0, _base.base).react.createElement((0, _logo.Logo), null), (0, _base.base).react.createElement("a", {
-        href: props.logoClickUrl || '/',
-        target: props.logoClickTarget || '_blank'
-    }, (0, _language.strings).appName)), (0, _base.base).react.createElement("div", {
+    }, (0, _base.base).react.createElement((0, _logo.Logo), null)), (0, _base.base).react.createElement("div", {
         className: "sanddance-explorer-commandbar"
     }, (0, _base.base).react.createElement((0, _base.base).fluentUI.Customizer, {
         scopedSettings: {
@@ -57314,8 +57311,8 @@ function Topbar(props) {
         farItems: farItems,
         styles: {
             root: {
-                backgroundColor: 'transparent',
-                height: 'unset',
+                backgroundColor: "transparent",
+                height: "unset",
                 paddingLeft: 0,
                 paddingRight: 0
             }
@@ -57435,9 +57432,9 @@ $RefreshReg$(_c, "CommandBarButtonStyles");
 
 },{"../base":"pRkrM","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"f0a81":[function(require,module,exports,__globalThis) {
 /*!
-* Copyright (c) Microsoft Corporation.
-* Licensed under the MIT License.
-*/ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+ * Copyright (c) Microsoft Corporation.
+ * Licensed under the MIT License.
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Logo", ()=>Logo);
 var _base = require("../base");
@@ -57451,14 +57448,38 @@ const s = `
 .......
 ......
 `;
-const d = s.split('\n').map((row, irow)=>row.length ? row.split('').map((char, icol)=>char.trim() ? `M${2 * icol + 1} ${2 * (irow - 1) + 1} v1 h1 v-1 Z` : '').join(' ') : '').join('\n');
+const d = s.split("\n").map((row, irow)=>row.length ? row.split("").map((char, icol)=>char.trim() ? `M${2 * icol + 1} ${2 * (irow - 1) + 1} v1 h1 v-1 Z` : "").join(" ") : "").join("\n");
 function Logo() {
     return (0, _base.base).react.createElement("svg", {
         xmlns: "http://www.w3.org/2000/svg",
-        viewBox: "0 0 16 16"
+        viewBox: "60 225 380 50",
+        "aria-hidden": "true"
+    }, (0, _base.base).react.createElement("g", {
+        fill: "#020079"
     }, (0, _base.base).react.createElement("path", {
-        d: d
-    }));
+        d: "M152.91 231.07h12.38l21.52 30.66v-30.66h7.9v37.86h-12.38l-21.52-30.66v30.66h-7.9v-37.86Z"
+    }), (0, _base.base).react.createElement("rect", {
+        x: 200.12,
+        y: 231.07,
+        width: 40.78,
+        height: 7.19
+    }), (0, _base.base).react.createElement("path", {
+        d: "m220.78 246.05-20.66-.02v7.23h34.99V246c-4.69.04-9.46.05-14.33.05Z"
+    }), (0, _base.base).react.createElement("polygon", {
+        points: "200.12 261.72 200.12 268.93 240.9 268.93 240.9 261.74 200.12 261.72"
+    }), (0, _base.base).react.createElement("path", {
+        d: "M254.26 242.32v3.73l21.47-.05c1.01 0 1.75-.24 2.22-.73.47-.49.7-1.51.7-3.06 0-1.23-.11-2.12-.32-2.68-.22-.56-.52-.91-.92-1.05-.4-.14-.97-.22-1.73-.22h-29.36v-7.19h32.66c2.13 0 3.92.54 5.38 1.62 1.46 1.08 2.19 2.92 2.19 5.52v7.3c0 1.12-.22 1.98-.65 2.6 2.24 1.01 3.35 2.7 3.35 5.08v9.57c-.11 4.11-2.49 6.17-7.14 6.17h-35.8v-26.61h7.95Zm26.44 18.66c.47-.5.7-1.59.7-3.24s-.24-2.91-.73-3.54c-.49-.63-1.25-.95-2.3-.95h-24.12v8.49h24.17c1.05 0 1.8-.25 2.27-.76Z"
+    }), (0, _base.base).react.createElement("path", {
+        d: "M295.95 267.17c-1.51-1.17-2.31-2.89-2.38-5.16v-30.93h7.95v27.69c.07 1.12.31 1.87.7 2.27.4.4.99.63 1.78.7h22.12c.72 0 1.26-.06 1.62-.19.36-.13.65-.43.87-.92.22-.49.32-1.27.32-2.35v-27.2h7.57v30.72c0 2.6-.74 4.43-2.22 5.52-1.48 1.08-3.26 1.62-5.35 1.62h-27.47c-2.16 0-4-.59-5.52-1.76Z"
+    }), (0, _base.base).react.createElement("path", {
+        d: "M341.92 231.07h7.9v30.66h32.83v7.19h-40.72v-37.86Z"
+    }), (0, _base.base).react.createElement("path", {
+        d: "M405.78 231.07h11.19l19.36 37.86h-9.25l-3.68-7.14H403.88l3.68-7.19h12.17l-8.38-16.33-15.68 30.66h-9.25l19.36-37.86Z"
+    }), (0, _base.base).react.createElement("polygon", {
+        points: "103.07 234.95 102.83 250.12 116.22 242.74 128.03 250.19 102.6 264.94 115.67 272.98 141.81 258.21 142.04 243.18 115.96 227.53 103.07 234.95"
+    }), (0, _base.base).react.createElement("polygon", {
+        points: "102.64 265.05 102.87 249.88 89.49 257.26 77.68 249.81 103.11 235.06 90.03 227.02 63.9 241.79 63.66 256.82 89.74 272.47 102.64 265.05"
+    })));
 }
 _c = Logo;
 var _c;

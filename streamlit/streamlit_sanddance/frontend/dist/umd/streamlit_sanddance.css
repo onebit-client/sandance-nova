@@ -144,13 +144,13 @@
 .sanddance-explorer-topbar .logo {
   color: #0078d4;
   grid-template-columns: 50px auto;
-  padding: 6px 0;
+  padding: 6px 16px;
   display: grid;
 }
 
 .sanddance-explorer-topbar .logo svg {
   fill: #0078d4;
-  width: 24px;
+  width: 160px;
   height: 24px;
   margin: 0 auto;
 }

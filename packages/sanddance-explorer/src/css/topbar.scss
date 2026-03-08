@@ -16,12 +16,12 @@
       color: $highlight-color;
       display: grid;
       grid-template-columns: $sidetab-width auto;
-      padding: 6px 0;
+      padding: 6px 16px;
       svg {
         fill: $highlight-color;
         height: 24px;
         margin: 0 auto;
-        width: 24px;
+        width: 160px;
       }
       a {
         color: inherit;
