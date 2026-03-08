@@ -8,9 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SandDance</title>
-    <link rel="stylesheet" type="text/css" href="css/sanddance-app.css">
-    <link rel="stylesheet" type="text/css" href="css/sanddance-app-site.css?2">
-    <link rel="shortcut icon" href="../favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/sanddance-app.css?12">
+    <link rel="stylesheet" type="text/css" href="css/sanddance-app-site.css?12">
+    <link rel="icon" type="image/svg+xml" href="images/logo-light.svg" />
 </head>
 
 <body>
@@ -27,8 +30,23 @@
     <script>
         function setTheme(darkTheme) {
             localStorage.setItem('theme', darkTheme ? 'Dark' : 'Light');
+            document.body.classList.toggle('dark-theme', !!darkTheme);
         }
         var darkTheme = localStorage.getItem('theme') === 'Dark';
+        document.body.classList.toggle('dark-theme', darkTheme);
+        var themeColors = {
+            "dark": {
+                "backgroundColor": "#0f1625",
+                "axisLine": "#31445f",
+                "axisText": "#c0cce0",
+                "gridLine": "rgba(149, 171, 204, 0.24)",
+                "hoveredCube": "#f2f6ff",
+                "clickableText": "#9eaefc",
+                "clickableTextHighlight": "#c9d3ff",
+                "searchText": "#d7e3ff",
+                "searchTextHighlight": "#f4f8ff"
+            }
+        };
         var insights = {
             "titanic": {
                 "columns": {
@@ -111,7 +129,7 @@
     <main id="app"></main>
 
     <footer>
-        {% include footer-links.html %}
+        <span>Copyright Nova by Aurora.</span>
     </footer>
 
     <script src="../external/js/react.development.js" crossorigin=""></script>

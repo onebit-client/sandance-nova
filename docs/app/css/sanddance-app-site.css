@@ -1,3 +1,61 @@
+:root {
+    --font-ui: "Geist", "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+    --font-size-xxs: 11px;
+    --font-size-xs: 12px;
+    --font-size-sm: 13px;
+    --font-size-md: 14px;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-6: 24px;
+
+    --radius-none: 0;
+    --radius-sm: 2px;
+    --radius-md: 4px;
+
+    --color-bg: #f6f8fb;
+    --color-surface: #ffffff;
+    --color-surface-muted: #f3f5f8;
+    --color-elevated: #ffffff;
+    --color-border: #d9dee7;
+    --color-border-strong: #c5ccd8;
+    --color-text: #111827;
+    --color-text-muted: #6b7280;
+    --color-accent: #020079;
+    --color-accent-hover: #0d1f9a;
+    --color-accent-press: #01055b;
+    --color-accent-contrast: #ffffff;
+    --color-filter-active-bg: #dce2ff;
+    --color-filter-active-border: #9aa8ff;
+    --color-filter-active-fg: #1d2459;
+}
+
+body.dark-theme,
+.sanddance-explorer.dark-theme {
+    --color-bg: #0b1018;
+    --color-surface: #111a28;
+    --color-surface-muted: #162133;
+    --color-elevated: #1a2740;
+    --color-border: #2b3953;
+    --color-border-strong: #3a4b6a;
+    --color-text: #e8eefc;
+    --color-text-muted: #9eacc8;
+    --color-accent: #9eaefc;
+    --color-accent-hover: #b6c1ff;
+    --color-accent-press: #7f93f7;
+    --color-accent-contrast: #0f1218;
+    --color-filter-active-bg: #25345d;
+    --color-filter-active-border: #6175c9;
+    --color-filter-active-fg: #edf2ff;
+}
+
 html,
 body {
     height: 100%;
@@ -5,24 +63,35 @@ body {
 }
 
 body {
+    background: var(--color-bg);
+    color: var(--color-text);
     display: grid;
-    font-family: 'Segoe UI', sans-serif;
-    grid-template-rows: auto 0fr;
+    font-family: var(--font-ui);
+    font-size: var(--font-size-sm);
+    grid-template-rows: 1fr auto;
+    line-height: 1.45;
+    text-rendering: optimizeLegibility;
 }
+
 select,
 button,
-input {
-    font-family: 'Segoe UI', sans-serif;
+input,
+textarea {
+    font-family: var(--font-ui);
 }
 
 header {
-    border-bottom: 1px solid #ccc;
-    font-size: smaller;
-    padding: 5px 1em;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--font-size-xs);
+    padding: var(--space-2) var(--space-4);
 }
 
 footer {
-    border-top: 1px solid #ccc;
-    font-size: smaller;
-    padding: 5px 1em;
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-xxs);
+    padding: var(--space-1) var(--space-3);
+    text-align: right;
 }
