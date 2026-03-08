@@ -1,3 +1,27 @@
+.sanddance-explorer,
+.sanddance-explorer .ms-Fabric,
+.sanddance-explorer .ms-Button,
+.sanddance-explorer .ms-CommandBar,
+.sanddance-explorer .ms-TextField,
+.sanddance-explorer .ms-Dropdown,
+.sanddance-explorer .ms-Checkbox,
+.sanddance-explorer .ms-ChoiceField,
+.sanddance-explorer .ms-Label,
+.sanddance-explorer input,
+.sanddance-explorer select,
+.sanddance-explorer button {
+  font-family: var(--font-ui, "Geist", "Inter", "Segoe UI", sans-serif);
+}
+
+.sanddance-group .group-head .count,
+.sanddance-datascope label,
+.sanddance-dataIndex .item-filtered,
+.sanddance-dataItem .column-value,
+.sanddance-search .sanddance-search-expression {
+  font-family: var(--font-mono, "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace);
+  font-variant-numeric: tabular-nums;
+}
+
 .sanddance-app-static-content {
   display: none;
 }
@@ -166,23 +190,26 @@
 .sanddance-explorer-topbar .logo {
   color: rgb(0, 120, 212);
   display: grid;
-  grid-template-columns: 50px auto;
-  padding: 6px 0;
+  grid-template-columns: 1fr;
+  padding: 4px 12px;
 }
 
 .sanddance-explorer-topbar .logo svg {
-  fill: rgb(0, 120, 212);
-  height: 24px;
-  margin: 0 auto;
-  width: 24px;
+  display: none;
 }
 
 .sanddance-explorer-topbar .logo a {
-  color: inherit;
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 24px;
+  background-image: url("../images/logo-light.svg");
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+  font-size: 0;
+  height: 28px;
+  line-height: 0;
   text-decoration: none;
+  width: 130px;
+  margin-top: 0.3rem;
 }
 
 .sanddance-explorer-commandbar {
@@ -205,6 +232,10 @@
 
 .dark-theme .sanddance-explorer-topbar .logo {
   color: #00b4f0;
+}
+
+.dark-theme .sanddance-explorer-topbar .logo a {
+  background-image: url("../images/logo-dark.svg");
 }
 
 .sanddance-group {
@@ -314,6 +345,7 @@
 
 .sanddance-sidebar .scrollable-container {
   width: 250px;
+  background-color: #f4f5f8;
 }
 
 .sanddance-sidebar .sidetab {
@@ -1010,6 +1042,462 @@
 
 .sanddance-sidebar .sanddance-datascope {
   min-height: 7em;
+}
+
+/* Design system overrides */
+.sanddance-explorer {
+  background: var(--color-bg, #f6f8fb);
+  color: var(--color-text, #111827);
+  font-size: var(--font-size-sm, 13px);
+  line-height: 1.4;
+}
+
+.sanddance-explorer a,
+.sanddance-legend th {
+  color: var(--color-accent, #1465d8);
+}
+
+.sanddance-explorer-topbar {
+  background-color: var(--color-surface, #fff);
+  border-bottom: 1px solid var(--color-border, #d9dee7);
+  grid-template-columns: 280px auto;
+  height: 40px;
+  margin-bottom: 0.3rem;
+}
+
+.sanddance-explorer-topbar .logo {
+  color: var(--color-accent, #1465d8);
+  padding: 7px var(--space-3, 12px);
+}
+
+.sanddance-explorer-topbar .logo a {
+  height: 24px;
+  width: 134px;
+}
+
+.sanddance-explorer-commandbar .ms-CommandBar {
+  background: var(--color-surface, #fff);
+  height: 40px;
+  margin-left: 1.3rem;
+}
+
+.sanddance-sidebar {
+  background-color: var(--color-surface, #fff);
+  border-right: 1px solid var(--color-border, #d9dee7);
+}
+
+.sanddance-sidebar .vbuttons {
+  background-color: var(--color-surface-muted, #f3f5f8);
+  border-right: 1px solid var(--color-border, #d9dee7);
+}
+
+.sanddance-sidebar .vbutton.selected {
+  background: var(--color-elevated, #fff);
+  box-shadow: inset 2px 0 0 var(--color-accent, #1465d8);
+}
+
+.sanddance-sidebar .vbutton button .ms-Button-icon {
+  color: var(--color-text-muted, #6b7280);
+}
+
+.sanddance-sidebar .vbutton.selected button .ms-Button-icon {
+  color: var(--color-accent, #1465d8);
+}
+
+.sanddance-group {
+  border-top-color: var(--color-border, #d9dee7);
+}
+
+.sanddance-group .group-head label {
+  color: var(--color-text-muted, #6b7280);
+  font-size: 10px;
+  letter-spacing: 1.6px;
+}
+
+.sanddance-group .group-head .count {
+  color: var(--color-text-muted, #6b7280);
+}
+
+.sanddance-datascope {
+  background-color: var(--color-surface-muted, #f3f5f8);
+  border-bottom-color: var(--color-border, #d9dee7);
+}
+
+.sanddance-datascope .datascope-button {
+  background-color: var(--color-surface, #fff);
+  border: 1px solid var(--color-border, #d9dee7);
+  border-radius: var(--radius-sm, 2px);
+  color: var(--color-text, #111827);
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.sanddance-datascope .datascope-button:hover {
+  background-color: var(--color-accent-hover, #0f58bf);
+  border-color: var(--color-accent-hover, #0f58bf);
+  color: var(--color-accent-contrast, #fff);
+}
+
+.sanddance-datascope.active .datascope-button.selected {
+  border-color: var(--color-accent, #1465d8);
+  box-shadow: inset 0 0 0 1px var(--color-accent, #1465d8);
+  color: var(--color-accent, #1465d8);
+}
+
+.sanddance-dataItem,
+.sanddance-search .sanddance-search-group {
+  background: var(--color-surface, #fff);
+  border-color: var(--color-border, #d9dee7);
+}
+
+.sanddance-search .sanddance-search-expression,
+.sanddance-dataIndex .item-filtered {
+  background-color: var(--color-surface-muted, #f3f5f8);
+}
+
+.sanddance-dataItem .name-value {
+  border-top-color: var(--color-border, #d9dee7);
+}
+
+.sanddance-dataItem .name-value:hover,
+.sanddance-legend .legend-row:hover {
+  background-color: var(--color-accent, #1465d8);
+  color: var(--color-accent-contrast, #fff);
+}
+
+.sanddance-panel {
+  background: var(--color-elevated, #fff);
+  border: 1px solid var(--color-border, #d9dee7);
+  border-radius: var(--radius-md, 4px);
+  box-shadow: 0 6px 18px -12px rgba(17, 24, 39, 0.35);
+  color: var(--color-text, #111827);
+}
+
+.sanddance-legend th:hover {
+  background-color: rgba(20, 101, 216, 0.12);
+  color: var(--color-accent, #1465d8);
+}
+
+.sanddance-explorer .ms-Button,
+.sanddance-explorer .ms-Dropdown-title,
+.sanddance-explorer .ms-TextField-fieldGroup {
+  background: var(--color-surface, #fff);
+  border: 1px solid var(--color-border, #d9dee7);
+  border-radius: var(--radius-sm, 2px);
+  color: var(--color-text, #111827);
+}
+
+.sanddance-explorer .ms-Button:hover,
+.sanddance-explorer .ms-Dropdown-title:hover,
+.sanddance-explorer .ms-TextField-fieldGroup:hover {
+  background: var(--color-surface-muted, #f3f5f8);
+  border-color: var(--color-border-strong, #c5ccd8);
+}
+
+.sanddance-explorer .ms-Button:focus-visible,
+.sanddance-explorer .ms-Dropdown-title:focus-visible,
+.sanddance-explorer .ms-TextField-fieldGroup:focus-within {
+  outline: 2px solid rgba(20, 101, 216, 0.35);
+  outline-offset: 1px;
+}
+
+.sanddance-explorer .ms-Button.ms-Button--primary {
+  background: var(--color-accent,#5e47ff);
+  color: var(--color-accent-contrast, #fff);
+  border: 0;
+  margin-bottom: 0.4rem;
+}
+
+.sanddance-explorer .ms-Button.ms-Button--primary:hover {
+  background: var(--color-accent-hover, #0f58bf);
+  border-color: var(--color-accent-hover, #0f58bf);
+}
+
+.sanddance-explorer.dark-theme .sanddance-dataItem,
+.sanddance-explorer.dark-theme .sanddance-search .sanddance-search-group,
+.sanddance-explorer.dark-theme .sanddance-panel {
+  background: var(--color-elevated, #1a2231);
+}
+
+.sanddance-explorer.dark-theme .sanddance-explorer-topbar {
+  background: var(--color-surface, #151a23);
+  border-bottom-color: var(--color-border, #2a3446);
+}
+
+.sanddance-explorer.dark-theme .sanddance-sidebar {
+  background: var(--color-surface, #151a23);
+  border-right-color: var(--color-border, #2a3446);
+}
+
+.sanddance-explorer.dark-theme .sanddance-sidebar .vbuttons {
+  background: var(--color-surface-muted, #1b2230);
+  border-right-color: var(--color-border, #2a3446);
+}
+
+.sanddance-explorer.dark-theme .sanddance-datascope {
+  background: var(--color-surface-muted, #1b2230);
+  border-bottom-color: var(--color-border, #2a3446);
+}
+
+.sanddance-explorer.dark-theme .sanddance-datascope .datascope-button {
+  background: var(--color-surface, #151a23);
+  border-color: var(--color-border, #2a3446);
+  color: var(--color-text, #e5eaf4);
+}
+
+.sanddance-explorer.dark-theme .sanddance-datascope .datascope-button:hover {
+  background: var(--color-accent-hover, #6aaeff);
+  border-color: var(--color-accent-hover, #6aaeff);
+  color: var(--color-accent-contrast, #08101c);
+}
+
+.sanddance-explorer.dark-theme .sanddance-dataItem .name-value {
+  border-top-color: var(--color-border, #2a3446);
+}
+
+.sanddance-explorer.dark-theme .sanddance-dialog a,
+.sanddance-explorer.dark-theme .sanddance-legend th {
+  color: var(--color-accent, #4b9dff);
+}
+
+.sanddance-explorer.dark-theme .sanddance-legend th:hover {
+  background-color: rgba(75, 157, 255, 0.22);
+}
+
+/* Phase 2 polish: density, rhythm, and interactions */
+.sanddance-sidebar .vbutton {
+  height: 52px;
+}
+
+.sanddance-sidebar .sidebar-dialogs .vbutton {
+  max-height: 52px;
+}
+
+.sanddance-sidebar .sidetab {
+  padding: var(--space-2, 8px) var(--space-3, 12px);
+}
+
+.sanddance-datascope.extended > div {
+  margin: var(--space-2, 8px) var(--space-3, 12px);
+  width: auto;
+}
+
+.sanddance-group .group-head {
+  margin: var(--space-3, 12px) 0 var(--space-2, 8px) 0;
+}
+
+.sanddance-group .group-head label {
+  font-size: var(--font-size-xxs, 11px);
+  font-weight: var(--font-weight-semibold, 600);
+  letter-spacing: 1.2px;
+}
+
+.sanddance-group .group-head .count {
+  font-size: var(--font-size-xs, 12px);
+  font-weight: var(--font-weight-medium, 500);
+}
+
+.sanddance-explorer-commandbar .ms-Button-label {
+  font-size: var(--font-size-xs, 12px);
+  font-weight: var(--font-weight-medium, 500);
+}
+
+.sanddance-explorer-commandbar .ms-CommandBarItem-link {
+  border:0;
+  color: var(--color-text-muted, #6b7280);
+  min-height: 30px;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.sanddance-explorer-commandbar .ms-CommandBarItem-link:hover {
+  background: var(--color-surface-muted, #f3f5f8);
+  color: var(--color-text, #111827);
+}
+
+.sanddance-explorer-commandbar .ms-CommandBarItem-link:active {
+  background: rgba(20, 101, 216, 0.12);
+  color: var(--color-accent, #1465d8);
+}
+
+.sanddance-columnMap .ms-Dropdown-title,
+.sanddance-columnMap .ms-TextField-fieldGroup,
+.sanddance-chart-button,
+.sanddance-search .search-action {
+  min-height: 32px;
+}
+
+.sanddance-columnMap .ms-Label,
+.sanddance-search .ms-Label,
+.sanddance-datascope label {
+  color: var(--color-text-muted, #6b7280);
+  font-size: var(--font-size-xxs, 11px);
+  font-weight: var(--font-weight-medium, 500);
+}
+
+.sanddance-explorer.dark-theme .sanddance-explorer-commandbar .ms-CommandBarItem-link {
+  color: var(--color-text-muted, #9ba7bd);
+}
+
+.sanddance-explorer.dark-theme .sanddance-explorer-commandbar .ms-CommandBarItem-link:hover {
+  background: var(--color-surface-muted, #1b2230);
+  color: var(--color-text, #e5eaf4);
+}
+
+/* Phase 3 polish: fix icon backgrounds, density, and readability */
+.sanddance-sidebar .vbuttons {
+  background: transparent;
+  border-right: none;
+}
+
+.sanddance-sidebar .vbutton {
+  background: transparent;
+  height: 48px;
+}
+
+.sanddance-sidebar .sidebar-dialogs .vbutton {
+  max-height: 48px;
+}
+
+.sanddance-sidebar .vbutton.selected {
+  background: transparent;
+  box-shadow: inset 2px 0 0 var(--color-accent, #020079);
+}
+
+.sanddance-sidebar .vbutton button,
+.sanddance-sidebar .vbutton .ms-Button {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.sanddance-sidebar .vbutton button:hover,
+.sanddance-sidebar .vbutton .ms-Button:hover {
+  background: transparent;
+}
+
+.sanddance-sidebar .vbutton button .ms-Button-icon {
+  font-size: 18px;
+}
+
+.sanddance-sidebar .sidetab {
+  padding: var(--space-2, 8px) 10px;
+}
+
+.sanddance-explorer-commandbar .ms-Button-label,
+.sanddance-history-button .ms-Button-label {
+  font-size: 11px;
+  font-weight: var(--font-weight-medium, 500);
+}
+
+.sanddance-datascope.extended > div {
+  margin: 6px 10px;
+}
+
+.sanddance-datascope .datascope-button {
+  padding: 3px 6px;
+}
+
+.sanddance-datascope .datascope-button .ms-Button-label {
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.sanddance-datascope.active .datascope-button.selected {
+  background: var(--color-accent, #020079);
+  border-color: var(--color-accent, #020079);
+  box-shadow: inset 0 0 0 1px var(--color-accent, #020079);
+  color: var(--color-accent-contrast, #fff);
+}
+
+.sanddance-datascope.active .datascope-button.selected label,
+.sanddance-datascope.active .datascope-button.selected .ms-Button-label {
+  color: var(--color-accent-contrast, #fff);
+}
+
+.sanddance-columnMap .ms-Dropdown-title,
+.sanddance-columnMap .ms-TextField-fieldGroup,
+.sanddance-columnMap .ms-TextField-field,
+.sanddance-explorer .ms-TextField-field,
+.sanddance-explorer input,
+.sanddance-explorer select {
+  color: #1f2a3d;
+  font-size: 12px;
+}
+
+.sanddance-columnMap .ms-Dropdown-title {
+  min-height: 36px;
+  padding-left: 10px;
+  padding-right: 30px;
+}
+
+.sanddance-explorer input::placeholder,
+.sanddance-explorer textarea::placeholder {
+  color: #7d889d;
+  font-size: 12px;
+}
+
+.sanddance-columnMap .ms-Label,
+.sanddance-search .ms-Label,
+.sanddance-datascope label {
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.sanddance-explorer.dark-theme .sanddance-columnMap .ms-Dropdown-title,
+.sanddance-explorer.dark-theme .sanddance-columnMap .ms-TextField-fieldGroup,
+.sanddance-explorer.dark-theme .sanddance-columnMap .ms-TextField-field,
+.sanddance-explorer.dark-theme .sanddance-explorer .ms-TextField-field,
+.sanddance-explorer.dark-theme .sanddance-explorer input,
+.sanddance-explorer.dark-theme .sanddance-explorer select {
+  color: #d8e0ef;
+}
+
+.sanddance-explorer.dark-theme .sanddance-explorer input::placeholder,
+.sanddance-explorer.dark-theme .sanddance-explorer textarea::placeholder {
+  color: #8e9bb2;
+}
+
+.ms-ChoiceFieldLabel{
+  
+font-size: 12px;
+}
+.field-144::before {
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(159 148 148);
+}
+
+/* Dark-only refinement pass (light mode unaffected) */
+.sanddance-explorer.dark-theme {
+  background: #0f1625;
+}
+
+.sanddance-explorer.dark-theme .sanddance-main,
+.sanddance-explorer.dark-theme .sanddance-main .sanddance-view {
+  background: #0f1625;
+}
+
+.sanddance-explorer.dark-theme .sanddance-sidebar .scrollable-container {
+  background-color: #111a28;
+}
+
+.sanddance-explorer.dark-theme canvas {
+  background-color: #0f1625;
+}
+
+.sanddance-explorer.dark-theme .sanddance-panel {
+  background: #162033;
+  border-color: #2f405b;
+}
+
+.sanddance-explorer.dark-theme .sanddance-legend .legend-row:hover {
+  background: rgba(158, 174, 252, 0.18);
+  color: #eaf0ff;
+}
+
+.sanddance-explorer.dark-theme footer {
+  background: #111a28;
+  border-top-color: #2b3953;
+  color: #9eacc8;
 }
 
 /*# sourceMappingURL=sanddance-app.css.map */
