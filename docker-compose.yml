@@ -1,7 +1,15 @@
 version: "3.9"
+
 services:
   sanddance:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # Target the final production stage only
+      target: production
+    image: sanddance-nova:latest
+    container_name: sanddance-nova
+    restart: unless-stopped
     ports:
       - "8085:80"
     extra_hosts:
@@ -10,6 +18,12 @@ services:
       - NODE_ENV=production
     networks:
       - sandance_network
+    # Resource limits recommended for a production VPS
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
 
 networks:
   sandance_network:
