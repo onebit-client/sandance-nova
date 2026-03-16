@@ -2,7 +2,7 @@
 # Stage 1 – Builder
 # Install all npm dependencies and produce the production build
 # =============================================================================
-FROM node:22-alpine AS builder
+FROM docker.io/library/node:22-alpine AS builder
 
 # Install build tools required by some native addons
 RUN apk add --no-cache python3 make g++
@@ -35,7 +35,7 @@ RUN npm run build-app
 # Stage 2 – Production image
 # Serve the compiled static assets from Nginx
 # =============================================================================
-FROM nginx:1.27-alpine AS production
+FROM docker.io/library/nginx:1.27-alpine AS production
 
 # Remove the default Nginx static files
 RUN rm -rf /usr/share/nginx/html/*
