@@ -55,7 +55,7 @@ COPY --from=builder /app/docs/sample-data/ /usr/share/nginx/html/sample-data/
 # Fix file permissions so Nginx (nginx user) can read everything
 RUN chmod -R 755 /usr/share/nginx/html
 
-# Use our custom Nginx server config
+# Use our custom Nginx server config for build
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose HTTP
