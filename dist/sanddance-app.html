@@ -1,160 +1,206 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <style>html, body {
-  height: 100%;
-  margin: 0;
-}
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
 
-body, select, button, input {
-  font-family: Segoe UI, sans-serif;
-}
+      body,
+      select,
+      button,
+      input {
+        font-family:
+          Segoe UI,
+          sans-serif;
+      }
 
-#app {
-  position: absolute;
-  inset: 0;
-}
-</style>
-    <link rel="stylesheet" type="text/css" href="/sanddance-app.fddf849d.css">
-    <link rel="shortcut icon" href="/favicon.0ec9ee52.ico">
-</head>
+      #app {
+        position: absolute;
+        inset: 0;
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/sanddance-app.fddf849d.css" />
+    <link rel="shortcut icon" href="/favicon.0ec9ee52.ico" />
+  </head>
 
-<body>
+  <body>
+    <h1>Hello Alexa</h1>
     <!-- link to JSON files so we can get a url from the bundler -->
-    <a class="sanddance-app-static-content" id="demovote" data-display-name="Demo Vote" data-type="tsv" href="/up_/docs/sample-data/demovote.tsv"></a>
-    <a class="sanddance-app-static-content" id="titanic" data-display-name="Titanic" data-type="tsv" href="/up_/docs/sample-data/titanicmaster.tsv"></a>
+    <a
+      class="sanddance-app-static-content"
+      id="demovote"
+      data-display-name="Demo Vote"
+      data-type="tsv"
+      href="/up_/docs/sample-data/demovote.tsv"
+    ></a>
+    <a
+      class="sanddance-app-static-content"
+      id="titanic"
+      data-display-name="Titanic"
+      data-type="tsv"
+      href="/up_/docs/sample-data/titanicmaster.tsv"
+    ></a>
 
-    <a class="sanddance-app-static-content" id="ACLED" data-display-name="ACLED" data-type="json" href="https://keplar.onebit.ng/api/api/wa2-sanddance"></a>
+    <a
+      class="sanddance-app-static-content"
+      id="ACLED"
+      data-display-name="ACLED"
+      data-type="json"
+      href="https://keplar.onebit.ng/api/api/wa2-sanddance"
+    ></a>
 
-    <script>var themeColors = {
-    "dark": {
-        defaultCube: [
-            128,
-            225,
-            255,
-            255
-        ]
-    },
-    "light": {
-        defaultCube: [
-            128,
-            225,
-            255,
-            255
-        ]
-    }
-};
-var insights = {
-    "titanic": {
-        "columns": {
-            "uid": "Name",
-            "x": "Gender",
-            "y": "Joined",
-            "color": "Survived",
-            "z": "TicketCost",
-            "size": "TicketCost",
-            "sort": "Survived"
+    <script>
+      var themeColors = {
+        dark: {
+          defaultCube: [128, 225, 255, 255],
         },
-        "scheme": "dual_redgreen",
-        "chart": "barchart",
-        "view": "2d"
-    },
-    "demovote": {
-        "columns": {
-            "uid": "Id",
-            "x": "Longitude",
-            "y": "Latitude",
-            "color": "Obama",
-            "z": "Education",
-            "size": "TotalPop",
-            "sort": "State"
+        light: {
+          defaultCube: [128, 225, 255, 255],
         },
-        "scheme": "redblue",
-        "chart": "scatterplot",
-        "view": "3d",
-        "colorBin": "quantize"
-    }
-};
-var options = {
-    "*": {
-        "chartPrefs": {
+      };
+      var insights = {
+        titanic: {
+          columns: {
+            uid: "Name",
+            x: "Gender",
+            y: "Joined",
+            color: "Survived",
+            z: "TicketCost",
+            size: "TicketCost",
+            sort: "Survived",
+          },
+          scheme: "dual_redgreen",
+          chart: "barchart",
+          view: "2d",
+        },
+        demovote: {
+          columns: {
+            uid: "Id",
+            x: "Longitude",
+            y: "Latitude",
+            color: "Obama",
+            z: "Education",
+            size: "TotalPop",
+            sort: "State",
+          },
+          scheme: "redblue",
+          chart: "scatterplot",
+          view: "3d",
+          colorBin: "quantize",
+        },
+      };
+      var options = {
+        "*": {
+          chartPrefs: {
             "*": {
+              "*": {
                 "*": {
-                    "*": {
-                        "signalValues": {
-                            "RoleColor_BinCountSignal": 7
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "titanic": {
-        "chartPrefs": {
-            "barchart": {
-                "color": {
-                    "Gender": {
-                        "scheme": "set2"
-                    }
-                }
-            }
-        }
-    },
-    "demovote": {
-        "chartPrefs": {
-            "*": {
-                "color": {
-                    "Winner": {
-                        "scheme": "dual_bluered"
-                    }
-                }
+                  signalValues: {
+                    RoleColor_BinCountSignal: 7,
+                  },
+                },
+              },
             },
-            "treemap": {
-                "*": {
-                    "*": {
-                        "columns": {
-                            "size": "TotalPop"
-                        }
-                    }
-                }
-            },
-            "stacks": {
-                "*": {
-                    "*": {
-                        "signalValues": {
-                            "RoleX_BinsSignal": 30,
-                            "RoleY_BinsSignal": 30
-                        }
-                    }
-                }
-            }
+          },
         },
-        "tooltipExclusions": [
-            "Id",
-            "Latitude",
-            "Longitude"
-        ]
-    }
-};
-
-</script>
+        titanic: {
+          chartPrefs: {
+            barchart: {
+              color: {
+                Gender: {
+                  scheme: "set2",
+                },
+              },
+            },
+          },
+        },
+        demovote: {
+          chartPrefs: {
+            "*": {
+              color: {
+                Winner: {
+                  scheme: "dual_bluered",
+                },
+              },
+            },
+            treemap: {
+              "*": {
+                "*": {
+                  columns: {
+                    size: "TotalPop",
+                  },
+                },
+              },
+            },
+            stacks: {
+              "*": {
+                "*": {
+                  signalValues: {
+                    RoleX_BinsSignal: 30,
+                    RoleY_BinsSignal: 30,
+                  },
+                },
+              },
+            },
+          },
+          tooltipExclusions: ["Id", "Latitude", "Longitude"],
+        },
+      };
+    </script>
 
     <main id="app">
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f3f2f1; font-family: 'Segoe UI', sans-serif;">
-            <style>
-                @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-            </style>
-            <div style="width: 40px; height: 40px; border: 4px solid #c8c6c4; border-top: 4px solid #0078d4; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-            <h2 style="margin-top: 20px; color: #323130; font-weight: 500;">Loading SandDance Nova...</h2>
-        </div>
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          background-color: #f3f2f1;
+          font-family: &quot;Segoe UI&quot;, sans-serif;
+        "
+      >
+        <style>
+          @keyframes spin {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+        </style>
+        <div
+          style="
+            width: 40px;
+            height: 40px;
+            border: 4px solid #c8c6c4;
+            border-top: 4px solid #0078d4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+          "
+        ></div>
+        <h2 style="margin-top: 20px; color: #323130; font-weight: 500">
+          Loading SandDance Nova...
+        </h2>
+      </div>
     </main>
 
-    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin=""></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin=""></script>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin=""
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin=""
+    ></script>
     <script type="module" src="/sanddance-app.8378b886.js"></script>
-
-
-
-</body></html>
+  </body>
+</html>
