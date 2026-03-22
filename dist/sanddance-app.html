@@ -22,7 +22,6 @@ body, select, button, input {
 </head>
 
 <body>
-<h1>Hello</h1>
     <!-- link to JSON files so we can get a url from the bundler -->
     <a class="sanddance-app-static-content" id="demovote" data-display-name="Demo Vote" data-type="tsv" href="/up_/docs/sample-data/demovote.tsv"></a>
     <a class="sanddance-app-static-content" id="titanic" data-display-name="Titanic" data-type="tsv" href="/up_/docs/sample-data/titanicmaster.tsv"></a>
@@ -142,7 +141,15 @@ var options = {
 
 </script>
 
-    <main id="app"></main>
+    <main id="app">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f3f2f1; font-family: 'Segoe UI', sans-serif;">
+            <style>
+                @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+            </style>
+            <div style="width: 40px; height: 40px; border: 4px solid #c8c6c4; border-top: 4px solid #0078d4; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+            <h2 style="margin-top: 20px; color: #323130; font-weight: 500;">Loading SandDance Nova...</h2>
+        </div>
+    </main>
 
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin=""></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin=""></script>
