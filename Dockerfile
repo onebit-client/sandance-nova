@@ -18,7 +18,7 @@ COPY extensions/ ./extensions/
 COPY streamlit/ ./streamlit/
 COPY scripts/ ./scripts/
 
-# Install all workspace dependencies (ci = reproducible, respects lock-file)
+# Install _ all workspace dependencies (ci = reproducible, respects lock-file)
 RUN npm ci --prefer-offline
 
 # Copy the rest of the source tree
