@@ -58,8 +58,10 @@ const undef = typeof undefined;
 ReactDOM.render(
   <AuthProvider
     config={keycloakConfig}
-    onEvent={(event, error) => console.log("Auth Event:", event, error)}
-    onTokens={(tokens) => console.log("Tokens:", tokens)}
+    onEvent={(event, error) => {
+      // console.log("Auth Event:", event, error)
+    }}
+    onTokens={(tokens) => {}}
     onLoad="check-sso"
   >
     <SandDanceApp
