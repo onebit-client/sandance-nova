@@ -298,7 +298,7 @@ export class SandDanceAppInner extends React.Component<Props, State> {
       <section className="sanddance-app">
         <Explorer
           logoClickTarget="_self"
-          logoClickUrl="/SandDance/"
+          logoClickUrl="/nova/"
           theme={theme}
           snapshotProps={{
             modifySnapShot: (snapshot: DataSourceSnapshot) => {

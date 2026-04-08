@@ -31,7 +31,7 @@
     "streamlit-dev": "parcel serve ./test/streamlit_sanddance.html --port 8087 --open --no-autoinstall",
     "data-inference-dev": "parcel serve ./test/data-inference.html --port 8088 --open --no-autoinstall",
     "start": "npm-run-all --parallel watch-typescript watch-css serve-app",
-    "build-app": "parcel build ./test/sanddance-app.html --dist-dir ./dist --no-autoinstall --no-cache --public-url ./",
+    "build-app": "parcel build ./test/sanddance-app.html --dist-dir ./dist --no-autoinstall --no-cache --public-url /nova/",
     "parcel": "npm run parcel --workspaces --if-present",
     "restore-dist": "git checkout -q -- ./packages/sanddance/dist/umd/sanddance.d.ts ./packages/sanddance-react/dist/umd/sanddance-react.d.ts ./packages/vega-deck.gl/dist/umd/vega-deck.gl.d.ts ./packages/vega-morphcharts/dist/umd/vega-morphcharts.d.ts ./packages/sanddance-specs/dist/umd/sanddance-specs.d.ts ./packages/data-inference/dist/umd/data-inference.d.ts",
     "clean-parcel-cache": "rimraf ./.parcel-cache/ && rimraf ./packages/**/.cache/ && rimraf ./packages/**/.parcel-cache/",
