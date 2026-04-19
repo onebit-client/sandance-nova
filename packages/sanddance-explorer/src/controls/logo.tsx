@@ -11,231 +11,160 @@ export function Logo() {
       id="Layer_2"
       data-name="Layer 2"
       xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 274.29 83.4"
     >
       <defs>
-        <style>{`
-          .cls-1 {
-            fill: url(#linear-gradient-12);
+        <style>
+          {
+            "\n      .cls-1 {\n        fill: url(#linear-gradient-12);\n      }\n\n      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-16, .cls-17, .cls-18 {\n        stroke-width: 0px;\n      }\n\n      .cls-2 {\n        fill: url(#linear-gradient-17);\n      }\n\n      .cls-3 {\n        fill: url(#linear-gradient);\n      }\n\n      .cls-4 {\n        fill: url(#linear-gradient-6);\n      }\n\n      .cls-5 {\n        fill: url(#linear-gradient-15);\n      }\n\n      .cls-6 {\n        fill: url(#linear-gradient-11);\n      }\n\n      .cls-7 {\n        fill: url(#linear-gradient-5);\n      }\n\n      .cls-8 {\n        fill: url(#linear-gradient-13);\n      }\n\n      .cls-9 {\n        fill: url(#linear-gradient-16);\n      }\n\n      .cls-10 {\n        fill: url(#linear-gradient-14);\n      }\n\n      .cls-11 {\n        fill: url(#linear-gradient-2);\n      }\n\n      .cls-12 {\n        fill: url(#linear-gradient-7);\n      }\n\n      .cls-13 {\n        fill: url(#linear-gradient-3);\n      }\n\n      .cls-14 {\n        fill: url(#linear-gradient-9);\n      }\n\n      .cls-15 {\n        fill: url(#linear-gradient-8);\n      }\n\n      .cls-16 {\n        fill: url(#linear-gradient-18);\n      }\n\n      .cls-17 {\n        fill: url(#linear-gradient-10);\n      }\n\n      .cls-18 {\n        fill: url(#linear-gradient-4);\n      }\n    "
           }
-
-          .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10, .cls-11, .cls-12, .cls-13, .cls-14, .cls-15, .cls-16, .cls-17, .cls-18 {
-            stroke-width: 0px;
-          }
-
-          .cls-2 {
-            fill: url(#linear-gradient-17);
-          }
-
-          .cls-3 {
-            fill: url(#linear-gradient);
-          }
-
-          .cls-4 {
-            fill: url(#linear-gradient-6);
-          }
-
-          .cls-5 {
-            fill: url(#linear-gradient-15);
-          }
-
-          .cls-6 {
-            fill: url(#linear-gradient-11);
-          }
-
-          .cls-7 {
-            fill: url(#linear-gradient-5);
-          }
-
-          .cls-8 {
-            fill: url(#linear-gradient-13);
-          }
-
-          .cls-9 {
-            fill: url(#linear-gradient-16);
-          }
-
-          .cls-10 {
-            fill: url(#linear-gradient-14);
-          }
-
-          .cls-11 {
-            fill: url(#linear-gradient-2);
-          }
-
-          .cls-12 {
-            fill: url(#linear-gradient-7);
-          }
-
-          .cls-13 {
-            fill: url(#linear-gradient-3);
-          }
-
-          .cls-14 {
-            fill: url(#linear-gradient-9);
-          }
-
-          .cls-15 {
-            fill: url(#linear-gradient-8);
-          }
-
-          .cls-16 {
-            fill: url(#linear-gradient-18);
-          }
-
-          .cls-17 {
-            fill: url(#linear-gradient-10);
-          }
-
-          .cls-18 {
-            fill: url(#linear-gradient-4);
-          }
-        `}</style>
+        </style>
         <linearGradient
           id="linear-gradient"
-          x1="127.06"
-          y1="75.15"
-          x2="127.94"
-          y2="40.06"
+          x1={127.06}
+          y1={75.15}
+          x2={127.94}
+          y2={40.06}
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0" stopColor="#32b9a0" />
-          <stop offset="1" stopColor="#0031b4" />
+          <stop offset={0} stopColor="#32b9a0" />
+          <stop offset={1} stopColor="#0031b4" />
         </linearGradient>
         <linearGradient
           id="linear-gradient-2"
-          x1="176.09"
-          y1="76.38"
-          x2="176.96"
-          y2="41.29"
+          x1={176.09}
+          y1={76.38}
+          x2={176.96}
+          y2={41.29}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-3"
-          x1="214.68"
-          y1="77.34"
-          x2="215.56"
-          y2="42.26"
+          x1={214.68}
+          y1={77.34}
+          x2={215.56}
+          y2={42.26}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-4"
-          x1="253.97"
-          y1="78.33"
-          x2="254.85"
-          y2="43.24"
+          x1={253.97}
+          y1={78.33}
+          x2={254.85}
+          y2={43.24}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-5"
-          x1="2.22"
-          y1="28.4"
-          x2="66.68"
-          y2="28.4"
+          x1={2.22}
+          y1={28.4}
+          x2={66.68}
+          y2={28.4}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-6"
-          x1="17.21"
-          y1="54.52"
-          x2="85.63"
-          y2="54.52"
+          x1={17.21}
+          y1={54.52}
+          x2={85.63}
+          y2={54.52}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-7"
-          x1="35.92"
-          y1="46.9"
-          x2="180.92"
-          y2="-67.22"
+          x1={35.92}
+          y1={46.9}
+          x2={180.92}
+          y2={-67.22}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-8"
-          x1="35.33"
-          y1="47.73"
-          x2="80.02"
-          y2="12.56"
+          x1={35.33}
+          y1={47.73}
+          x2={80.02}
+          y2={12.56}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-9"
-          x1="27.72"
-          y1="53.4"
-          x2="74.5"
-          y2="16.58"
+          x1={27.72}
+          y1={53.4}
+          x2={74.5}
+          y2={16.58}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-10"
-          x1="21.26"
-          y1="58.5"
-          x2="23.28"
-          y2="56.91"
+          x1={21.26}
+          y1={58.5}
+          x2={23.28}
+          y2={56.91}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-11"
-          x1="27.15"
-          y1="52.68"
-          x2="74"
-          y2="15.81"
+          x1={27.15}
+          y1={52.68}
+          x2={74}
+          y2={15.81}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-12"
-          x1="27.15"
-          y1="52.68"
-          x2="74"
-          y2="15.81"
+          x1={27.15}
+          y1={52.68}
+          x2={74}
+          y2={15.81}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-13"
-          x1="27.3"
-          y1="52.86"
-          x2="74.14"
-          y2="15.99"
+          x1={27.3}
+          y1={52.86}
+          x2={74.14}
+          y2={15.99}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-14"
-          x1="32.15"
-          y1="50.24"
-          x2="38.79"
-          y2="45.01"
+          x1={32.15}
+          y1={50.24}
+          x2={38.79}
+          y2={45.01}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-15"
-          x1="27.3"
-          y1="52.86"
-          x2="74.14"
-          y2="15.99"
+          x1={27.3}
+          y1={52.86}
+          x2={74.14}
+          y2={15.99}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-16"
-          x1="27.3"
-          y1="52.86"
-          x2="74.14"
-          y2="15.99"
+          x1={27.3}
+          y1={52.86}
+          x2={74.14}
+          y2={15.99}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-17"
-          x1="32.15"
-          y1="50.24"
-          x2="38.79"
-          y2="45.01"
+          x1={32.15}
+          y1={50.24}
+          x2={38.79}
+          y2={45.01}
           xlinkHref="#linear-gradient"
         />
         <linearGradient
           id="linear-gradient-18"
-          x1="27.3"
-          y1="52.86"
-          x2="74.14"
-          y2="15.99"
+          x1={27.3}
+          y1={52.86}
+          x2={74.14}
+          y2={15.99}
           xlinkHref="#linear-gradient"
         />
       </defs>
